@@ -1,1 +1,16 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+    --main-font-family: 'Inter-Variable';
+    --accent-font-family: 'PressStart2P';
+    --main-font-weight: 400;
+    --accent-font-weight: 700;
+    --accent-color: rgb(0 0 0);
+    --accent-color-active: rgb(0 0 0 / 0.6);
+    --background-color: rgb(255 255 255);
+    --background-page-color: linear-gradient(#e7e7e7, #1a1a1a);
+    --background-rows: repeating-linear-gradient(#d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px);
+    --background-columns: repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px);
+    --like-button-text: #fff;
+    --heart-fill: rgb(255 0 0);
+    --stroke-color: rgb(255 255 255);
+}
