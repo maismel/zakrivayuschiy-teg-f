@@ -19,7 +19,6 @@
   min-block-size: 100dvb;
   padding: 0;
   margin: 0 auto;
-  font-family: var(--main-font-family), sans-serif;
   background-image: var(--background-rows), var(--background-columns), var(--background-page-color);
   background-size: cover;
   background-repeat: no-repeat;
@@ -33,7 +32,8 @@
 
 @supports (font-variation-settings: normal) {
   .page {
-      font-family: 'Inter-Variable', sans-serif;
+      font-family: var(--main-font-family), sans-serif;
+      font-variation-settings: 'wght' 400, 'wght' 785;
   }
 } 
 
@@ -242,7 +242,7 @@
 /*****   иконка сердечко     *****/
 
 .card__icon-button {
-  padding: 0 2px;
+  padding: 0;
   background: transparent;
   border: none;
   transition: 0.3s ease;
@@ -258,7 +258,7 @@
 
 .like-icon {
   width: 39px;
-  height: 36px;
+  height: 30px;
 }
 
 .like-icon:hover .main-body {
@@ -320,12 +320,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border: 2px solid var(--accent-color);
-}
-
-.like-icon {
-  height: 31px;
-  width: 36px;
+  outline: 2px solid var(--accent-color);
 }
 
 .main-body, .core {
@@ -338,29 +333,17 @@
 
 /*****      кнопка лайкнуть       *****/
 
-.card__like-button {
+.button {
   font-family: var(--accent-font-family);
   font-weight: var(--accent-font-weight);
   font-size: 14px;
-  color: var(--accent-color);
-  padding: 10px 36px;
+  color: var(--like-button-text);
   border: 2px solid var(--accent-color);
   background: transparent;
   position: relative;
 }
 
-.like-button__text {
-  color: var(--like-button-text);
-  mix-blend-mode: difference;
-}
-
-.like-button__text-unlike {
-  color: var(--like-button-text);
-  mix-blend-mode: difference;
-  display: none;
-}
-
-.card__like-button::before {
+.button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -372,16 +355,29 @@
   transition: width 0.5s;
 }
 
-.card__like-button:hover::before {
+.button:hover::before {
   width: 100%;
 }
 
-.card__like-button:focus {
+.button:focus {
   outline: none;
 }
 
-.card__like-button:focus-visible {
+.button:focus-visible {
   box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.card__like-button {
+  padding: 10px 36px;
+}
+
+.like-button__text {
+  mix-blend-mode: difference;
+}
+
+.like-button__text-unlike {
+  mix-blend-mode: difference;
+  display: none;
 }
 
 .card__icon-button:has(.is-liked) + .card__like-button .like-button__text {
@@ -404,48 +400,18 @@
 }
 
 .button__save {
-  font-family: var(--accent-font-family);
-  font-weight: var(--accent-font-weight);
-  font-size: 14px;
-  color: var(--like-button-text);
-  background: var(--background-color);
   padding: 18.5px 20px;
   margin: 0 auto;
-  border: 2px solid var(--accent-color);
   width: 340px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  position: relative;
+  background: var(--background-color);
 }
 
 .button__save-text {
   mix-blend-mode: difference;
-}
-
-.button__save::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  transition: width 0.3s;
-  background-color: var(--accent-color);
-  transition: width 0.5s;
-}
-
-.button__save:hover::before {
-  width: 100%;
-}
-
-.button__save:focus {
-  outline: none;
-}
-
-.button__save:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
 }
 
 .floppy-icon {
@@ -494,44 +460,15 @@
 }
 
 .dialog__button {
-  font-family: var(--accent-font-family);
-  font-weight: var(--main-font-weight);
-  font-size: 14px;
-  color: var(--like-button-text);
   background: var(--background-color);
   border: 2px solid var(--accent-color);
   padding: 12.5px 132.5px;
   text-transform: uppercase;
   display: block;
-  position: relative;
 }
 
 .dialog__button-text {
   mix-blend-mode: difference;
-}
-
-.dialog__button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  transition: width 0.3s;
-  background-color: var(--accent-color);
-  transition: width 0.5s;
-}
-
-.dialog__button:hover::before {
-  width: 100%;
-}
-
-.dialog__button:focus {
-  outline: none;
-}
-
-.dialog__button:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
 }
 
 /*****    filters for images     *****/
@@ -566,4 +503,11 @@
 
 .image-8 {
   filter: saturate(150%) hue-rotate(120deg) ;
+}
+
+@media (width <= 375px) {
+  .button__save {
+    flex-direction: column;
+    width: auto;
+  }
 }
