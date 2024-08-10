@@ -28,7 +28,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Inter', sans-serif;
 }
+
+@supports (font-variation-settings: normal) {
+  .page {
+      font-family: 'Inter-Variable', sans-serif;
+  }
+} 
 
 .content {
   display: grid;
@@ -142,7 +149,7 @@
 
 .main {
   margin-top: 100px;
-  background: var(--background-color);
+  background: transparent;
 }
 
 .cards {
@@ -153,6 +160,7 @@
 
 .card {
   border: 2px solid var(--accent-color);
+  background: var(--background-color);
 }
 
 .card__title {
@@ -166,11 +174,11 @@
 
 .card__image-block {
   position: relative;
-  mix-blend-mode: hard-light;
 }
 
 .card__image {
   width: 100%;
+  outline: 2px solid var(--accent-color);
 }
 
 .card__image-label {
@@ -178,14 +186,30 @@
   font-weight: var(--main-font-weight);
   font-size: 14px;
   color: var(--accent-color);
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--stroke-color);
+  /*-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--stroke-color);*/
   text-transform: uppercase;
   position: absolute;
   display: block;
-  mix-blend-mode: hard-light;
+  opacity: .5;
   top: 25px;
   right: 25px;
+  text-shadow: -1px 0 var(--stroke-color), 
+  0 1px var(--stroke-color), 
+  1px 0 var(--stroke-color), 
+  0 -1px var(--stroke-color);
+}
+
+@supports((text-stroke: 1px var(--stroke-color)) or (-webkit-text-stroke: 1px var(--stroke-color))) {
+  .card__image-label {
+      -webkit-text-stroke: 1px var(--stroke-color);
+      text-stroke: 1px var(--stroke-color);
+      text-shadow: none;
+  }
+} 
+
+.text-low {
+  text-transform: lowercase;
 }
 
 .card__description {
@@ -230,6 +254,11 @@
 
 .core {
   transition: 0.3s 0.03s;
+}
+
+.like-icon {
+  width: 39px;
+  height: 36px;
 }
 
 .like-icon:hover .main-body {
@@ -365,4 +394,176 @@
 
 .card__icon-button:has(.is-liked) + .card__like-button {
   padding: 10px 22px;
+}
+
+/*****          FOOTER           *****/
+
+.footer {
+  margin-top: 50px;
+  margin-bottom: 103px;
+}
+
+.button__save {
+  font-family: var(--accent-font-family);
+  font-weight: var(--accent-font-weight);
+  font-size: 14px;
+  color: var(--like-button-text);
+  background: var(--background-color);
+  padding: 18.5px 20px;
+  margin: 0 auto;
+  border: 2px solid var(--accent-color);
+  width: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.button__save-text {
+  mix-blend-mode: difference;
+}
+
+.button__save::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: width 0.3s;
+  background-color: var(--accent-color);
+  transition: width 0.5s;
+}
+
+.button__save:hover::before {
+  width: 100%;
+}
+
+.button__save:focus {
+  outline: none;
+}
+
+.button__save:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.floppy-icon {
+  height: 21px;
+  width: 21px;
+  mix-blend-mode: difference;
+}
+
+/*****        dialog           *****/
+
+.dialog {
+  margin: auto;
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / .8);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+
+.dialog__text-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dialog__floppy-icon {
+  width: 39px;
+  height: 39px;
+  mix-blend-mode: difference;
+}
+
+.dialog__text {
+  font-family: var(--accent-font-family);
+  font-weight: var(--main-font-weight);
+  font-size: 14px;
+  color: var(--accent-color);
+  width: 234px;
+}
+
+.dialog__button {
+  font-family: var(--accent-font-family);
+  font-weight: var(--main-font-weight);
+  font-size: 14px;
+  color: var(--like-button-text);
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+  padding: 12.5px 132.5px;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
+}
+
+.dialog__button-text {
+  mix-blend-mode: difference;
+}
+
+.dialog__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: width 0.3s;
+  background-color: var(--accent-color);
+  transition: width 0.5s;
+}
+
+.dialog__button:hover::before {
+  width: 100%;
+}
+
+.dialog__button:focus {
+  outline: none;
+}
+
+.dialog__button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+/*****    filters for images     *****/
+
+.image-1 {
+  filter: brightness(200%);
+}
+
+.image-2 {
+  filter: contrast(150%);
+}
+
+.image-3 {
+  filter: saturate(80%);
+}
+
+.image-4 {
+  filter: grayscale(0.7);
+}
+
+.image-5 {
+  filter: invert(1);
+}
+
+.image-6 {
+  filter: hue-rotate(180deg);
+}
+
+.image-7 {
+  filter: blur(0.3rem);
+}
+
+.image-8 {
+  filter: saturate(150%) hue-rotate(120deg) ;
 }
