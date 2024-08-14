@@ -159,7 +159,7 @@
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 51px;
 }
 
 .card {
@@ -185,6 +185,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .card__image-label {
@@ -219,7 +220,7 @@
 }
 
 .card__description {
-  margin: 27px 25px 25px;
+  margin: 31px 25px 25px;
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -398,12 +399,12 @@
 /*****          SECTION / SAVE           *****/
 
 .section__save {
-  margin-top: 50px;
+  margin-top: 52px;
   margin-bottom: 103px;
 }
 
 .button__save {
-  padding: 18.5px 20px;
+  padding: 16px 20px;
   margin: 0 auto;
   width: 340px;
   display: flex;
@@ -514,6 +515,7 @@
 
   .header__theme-menu {
     margin-left: 41.5%;
+    margin-top: 4px;
   }
 
   .header__title {
@@ -524,10 +526,6 @@
   .header__subtitle {
     height: 14px;
     margin-top: 10px;
-  }
-
-  .header__theme-menu {
-    margin-top: 4px;
   }
 
   /*****    MAIN      *****/
@@ -551,7 +549,6 @@
   .button__save {
     flex-direction: column;
     width: auto;
-    padding: 16px 20px;
   }
 
   .floppy-icon {
