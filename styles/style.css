@@ -284,22 +284,22 @@
 
 .like-icon:hover .main-body {
   fill: var(--accent-color);
-  transition: 0.3s 0.05s;
+  transition: 0.3s 0.05s linear;
 }
 
 .like-icon:hover .core {
   fill: var(--accent-color);
-  transition: 0.3s;
+  transition: 0.3s linear;
 }
 
 .like-icon:active .main-body {
   fill: var(--heart-fill);
-  transition: 0.3s 0.05s;
+  transition: 0.3s 0.05s linear;
 }
 
 .like-icon:active .core {
   fill: var(--heart-fill);
-  transition: 0.3s;
+  transition: 0.3s linear;
 }
 
 /*****        сердечко нажато  /  удалить потом      *****/
@@ -324,7 +324,7 @@
 }
 
 .like-icon.is-liked .contour {
-  transition: 0.1s linear;
+  transition: 0.3s 0.06s linear;
   fill: var(--heart-fill);
 }
 
@@ -433,6 +433,8 @@
   margin: auto;
   background: var(--background-color);
   border: 2px solid var(--accent-color);
+  height: 191px;
+  width: 353px;
 }
 
 .dialog::backdrop {
@@ -443,7 +445,9 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 20px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .dialog__text-block {
@@ -564,6 +568,14 @@
   .floppy-icon {
     width: 28px;
     height: 28px;
+  }
+
+  .dialog {
+    width: 341px;
+  }
+
+  .dialog__text {
+    width: 198px;
   }
 
   .dialog__button {
